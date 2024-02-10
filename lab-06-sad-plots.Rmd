@@ -184,7 +184,6 @@ Make any edits as needed.
 
 Also, make sure all of your R chunks are properly labelled, and your figures are reasonably sized.
 
-Once the team leader for the week pushes their final changes, others should *pull* the changes and knit the R Markdown document to confirm that they can reproduce the report.
 
 # More ugly charts
 
