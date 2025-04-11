@@ -142,12 +142,10 @@ staff_long %>%
   geom_line() +
   labs(
     title = "Faculty Trend over Time (1975-2011)",
-    subtitle = "part-time Faculty Increase",
     x = "",
     y = ""
   ) +
-  theme(legend.title = element_blank()) +
-  scale_color_manual(values = c(rep("gray", 4), "red"))
+  theme(legend.title = element_blank())
 
 ```
 
@@ -158,6 +156,23 @@ staff_long %>%
     What changes would you propose making to this plot to tell this story and why.
 
 3.  Implement the changes you proposed in the previous exercise.
+
+
+```{r fig.width = 10, fig.fullwidth = TRUE}
+staff_long %>%
+  ggplot(aes(x = year, y = value, group = faculty_type, color = faculty_type)) +
+  geom_line() +
+  labs(
+    title = "Faculty Trend over Time (1975-2011)",
+    subtitle = "part-time Faculty Increase",
+    x = "",
+    y = ""
+  ) +
+  theme(legend.title = element_blank()) +
+  scale_color_manual(values = c(rep("gray", 4), "red"))
+
+```
+
 
 🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards.*
 
