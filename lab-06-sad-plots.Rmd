@@ -195,10 +195,28 @@ knitr::include_graphics("img/fisheries.png")
 Load the data.
 
 ```{r load-data-fisheries, eval = FALSE}
-fisheries <- read_csv("data/fisheries.csv")
+fisheries <- read_csv("data/fisheries.csv", show_col_types = FALSE)
+
 ```
 
 5.  Create a new data visualisation for these data that implements the improvements you proposed in the previous exercise (or many of them as you can).
+
+```{r}
+  fisheries %>%
+  filter(total >= 700000) %>%
+  mutate(country = fct_reorder(country, aquaculture, min)) %>%
+  select(-total) %>%
+  pivot_longer(cols = -country, names_to = "type") %>%
+  ggplot(aes(y = country, x = value, fill = type)) +
+  geom_bar(stat = "identity", position = "fill") +
+  scale_fill_manual(values = c("#9ecae1", "#3182bd")) +
+  theme(legend.title = element_blank(),
+        legend.position = "top") +
+  labs(title = "Fishing by country") +
+  xlab("Proportion") +
+  ylab("")
+
+```
 
 🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards and review the md document on GitHub to make sure you're happy with the final state of your work.*
 
